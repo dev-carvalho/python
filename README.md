@@ -9,14 +9,13 @@ alias python=python3
 
 ### Framework de desenvolvimento
 
-- Biblioteca da API: FastAPI
+#### Biblioteca da API: FastAPI
 
-pip3 install fastapi 
-pip install -U http-exceptions  
+- pip3 install fastapi 
 
-- Servidor Web (Servidor ASGI) aplicação
+#### Servidor Web (Servidor ASGI) aplicação
 
-pip3 install "uvicorn[standard]"
+- pip3 install "uvicorn[standard]"
 
 
 

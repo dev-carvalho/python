@@ -92,7 +92,3 @@ async def update_user(user_update: UserUpdateRequest, user_id: UUID):
         status_code=404,
         detail=f"usuário com id: {user_id} não existe!"
     ) 
-
-
-
-
