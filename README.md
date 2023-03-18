@@ -17,14 +17,7 @@ alias python=python3
 
 - pip3 install "uvicorn[standard]"
 
-
-
-
-
-
-### Para rodar a  API (api.py)
-
-uvicorn api:app --reload
-
-- “ — reload”, que é responsável por atualizar o projeto toda vez que o arquivo api.py é modificado
+> Como usar:
+> uvicorn api:app --reload
+> “ — reload”, que é responsável por atualizar o projeto toda vez que o arquivo api.py é modificado
  
