@@ -12,7 +12,6 @@ class Role(str,Enum):
     user="user"
     student="student"
 
-
 class User(BaseModel):
     id:Optional[UUID] = uuid4()
     first_name: str
@@ -26,3 +25,4 @@ class UserUpdateRequest(BaseModel):
     last_name: Optional[str]
     middle_name: Optional[str]
     roles: Optional[List[Role]]
+    
