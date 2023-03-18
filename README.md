@@ -1,23 +1,26 @@
 
 
-- Instalação do Python
+### Instale o Python
+
+```bash
 apt-get install python3 python3-pip
+```
 
-- Alias
-alias python=python3
+### Instale o framework de desenvolvimento de APIRest: FASTAPI 
 
-
-### Framework de desenvolvimento
-
-#### Biblioteca da API: FastAPI
-
+```bash
 - pip3 install fastapi 
+```
 
-#### Servidor Web (Servidor ASGI) aplicação
+### Instale o servidor Web (Servidor ASGI) 
 
+```bash
 - pip3 install "uvicorn[standard]"
+```
 
-> Como usar:
-> uvicorn api:app --reload
-> “ — reload”, que é responsável por atualizar o projeto toda vez que o arquivo api.py é modificado
+Como usar:
+```bash
+uvicorn api:app --reload
+# “--reload”  é responsável toda vez que atualizar o projeto 
+```
  
