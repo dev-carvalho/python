@@ -1,3 +1,6 @@
+# Autor: Marcos Antonio de Carvalho
+# Descrição: Modelagem de dados pydantic.
+
 from typing   import Optional, List
 from uuid     import UUID, uuid4
 from pydantic import BaseModel
