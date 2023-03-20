@@ -6,11 +6,11 @@
 #   FastAPI Tutorial - Building RESTful APIs with Python
 #   https://www.youtube.com/watch?v=GN6ICac3OXY
 
-from typing  import List
+from typing  import Optional, List
 from uuid    import UUID, uuid4
 
 # pip3 install fastapi  
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException 
 
 # models.py
 from models  import Gender, Role, User, UserUpdateRequest  
@@ -92,3 +92,24 @@ async def update_user(user_update: UserUpdateRequest, user_id: UUID):
         status_code=404,
         detail=f"usuário com id: {user_id} não existe!"
     ) 
+
+
+#
+# Manipulação de Cookie
+# https://docs.roy4801.tw/Programming%20Language/python/libs/fastapi/
+#
+
+# getCookie - Recupera um Cookie existente
+from fastapi import Cookie
+
+@app.get('/getCookie')
+def get_cookie(test: Optional[str] = Cookie(...)):
+    return test
+
+# setCookie - Guarda um valor em um Cookie
+from fastapi import Response
+
+@app.get('/setCookie')
+def set_cookie(response: Response):
+    response.set_cookie(key='test', value='fuck you')
+    return {'message': 'success'}
