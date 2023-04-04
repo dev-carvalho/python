@@ -40,4 +40,4 @@ if response.status_code == 200:
     with open(args.file_name, "w") as file:
         file.write(response_text)
 else:
-    print(f"Request failed with status code: {str(response.status.code)}")
+    print(f"Request failed with status code: {str(response.status_code)}")
