@@ -20,7 +20,41 @@ from fastapi import FastAPI, HTTPException
 # models.py
 from models import Gender, Role, User, UserUpdateRequest
 
-app = FastAPI()
+#app = FastAPI()
+
+# Auto-documentação da API está exposta para o consumidor em  "/docs"
+#  Referências na construção
+#  https://fastapi.tiangolo.com/tutorial/metadata/
+
+# Dica - O campo description pode ser escrito com Markdown que será renderizado na saída.
+description = """
+### API REST escrita em Pythom utilizando a FastAPI vai ajudar a fazer coisas incriveis. 🚀
+---
+#### Users: Operations with users. The **login** logic is also here.
+
+You will be able to:
+
+* **Create users** (_not implemented_).
+* **Read users** (_not implemented_).
+"""
+
+app = FastAPI(
+    title="USER",
+    description=description,
+    version="0.0.1",
+    terms_of_service="http://example.com/terms/",
+    contact={
+        "name": "Deadpoolio the Amazing",
+        "url": "http://x-force.example.com/contact/",
+        "email": "dp@x-force.example.com",
+    },
+    license_info={
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
+    },
+)
+
+
 
 db: List[User] = [
     User(
@@ -42,12 +76,6 @@ db: List[User] = [
     ),
 ]
 
-# Document - reservado para documentação da API exposta para o consumidor
-
-
-@app.get("/api/v1/users/doc")
-async def hello_world_root():
-    return {"API Versão 1": "Documentação do consumidor"}
 
 #
 # Implementação do CRUD
@@ -60,14 +88,14 @@ async def hello_world_root():
 # Read - retorna p banco de dados
 
 
-@app.get("/api/v1/users")
+@app.get("/users")
 async def fetch_users():
     return db
 
 # Create - adicionar um usuário
 
 
-@app.post("/api/v1/users")
+@app.post("/users")
 async def register_user(user: User):  # usuário vem no
     db.append(user)
     return {"id": user.id}
@@ -75,7 +103,7 @@ async def register_user(user: User):  # usuário vem no
 # Delete - apagar um usuário
 
 
-@app.delete("/api/v1/users/{user_id}")
+@app.delete("/users/{user_id}")
 async def delete_user(user_id: UUID):
     for user in db:
         if user.id == user_id:
@@ -90,7 +118,7 @@ async def delete_user(user_id: UUID):
 # desc.: solicita uma atualização para um determinado id
 
 
-@app.put("/api/v1/users/{user_id}")
+@app.put("/users/{user_id}")
 async def update_user(user_update: UserUpdateRequest, user_id: UUID):
     for user in db:
         if user.id == user_id:
@@ -133,8 +161,8 @@ def set_cookie(response: Response):
 
 # Ativa o serviço em produção
 # Isso aqui eu aprendi perguntando para o chatGPT
-if __name__ == '__main__':
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+#if __name__ == '__main__':
+#    uvicorn.run(app, host="0.0.0.0", port=8000)
 
 
 # Ativa o Serviço em Desenvolvimento
