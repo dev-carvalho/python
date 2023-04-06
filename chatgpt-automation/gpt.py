@@ -1,10 +1,10 @@
-# Author: Marcos Antônio de Carvaho
+# Designed by Marcos Antonio de Carvalho
 # Description: API para solicitar script Python ao ChatGPT
 #
 # Referências
 #   Python Automation with ChatGPT  https://www.youtube.com/watch?v=w-X_EQ2Xva4
 #
-# Created: 01.april.2023 - Londrina/Paraná
+# Created: 01.april.2023 - Londrina/Paraná (Dia da Mentira kkk)
 
 # import openai
 
@@ -25,7 +25,7 @@ parser.add_argument("prompt", help="the prompt to send to the OpenAI API")
 parser.add_argument("file_name", help="Name of the file to save Python script")
 
 print("Python Automation with ChatGPT - Version 0.0.1")
-print("Designed by Marcos Aantonio de Carvalho\n")
+print("Designed by Marcos Antonio de Carvalho\n")
 
 args = parser.parse_args()
 
