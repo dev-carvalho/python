@@ -1,5 +1,5 @@
 __pycache__
 .vscode
-.env
+chatgpt-automation/.env
 key.py
 teste.py
