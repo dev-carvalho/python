@@ -10,23 +10,28 @@
 
 import requests
 import argparse
-import os
+#import os 
+
+# Criar uma chave de acesso para api da OpenAI 
+# em https://platform.openai.com/account/api-keys 
+# e configurar o arquivo key.py
+from key import key_api # carregar a key_api do arquivo key.py
 
 parser = argparse.ArgumentParser()
 parser.add_argument("prompt", help="the prompt to send to the OpenAI API")
 parser.add_argument("file_name", help="Name of the file to save Python script")
 
-# Criar a api_key em https://platform.openai.com/account/api-keys 
 api_endpoint = "https://api.openai.com/v1/completions"
-api_key = os.getenv("OPENAI_API_KEY")
-# export OPENAI_API_KEY=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
-#api_key = "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"
+
+print(f'API Endpoint: {api_endpoint}')
+print(f'Key API: {key_api}')
+
 
 args = parser.parse_args()
 
 request_headers = {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + api_key
+    'Authorization': 'Bearer {api_key}'
 }
 
 request_data = {
