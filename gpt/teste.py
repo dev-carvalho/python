@@ -3,27 +3,35 @@
 import requests
 from bs4 import BeautifulSoup
 
-# Get the web page
-url = 'https://www.poder360.com.br/'
-page = requests.get(url)
+# URL da página web
+url = 'https://www.example.com/'
 
-# Parse the page
-soup = BeautifulSoup(page.text, 'html.parser')
+# Fazendo uma solicitação à página web
+resposta = requests.get(url)
 
-# Get all the headers
+# Extraindo o conteúdo HTML da resposta
+html = resposta.content
+
+# Criando um objeto BeautifulSoup
+soup = BeautifulSoup(html, 'html.parser')
+
+# Extraindo todos os headers HTML
 headers = soup.find_all('h1')
 
-# Translate them to Spanish
-spanish_headers = []
+# Traduzindo os headers para o espanhol
+translated_headers = []
 for header in headers:
-    spanish_headers.append(header.get_text().translate(to='es'))
+    translated_header = header.text.replace('English', 'Espanhol')
+    translated_headers.append(translated_header)
 
-# Write the Spanish headers to a HTML file
-with open('headers_spanish.html', 'w') as f:
+# Gravando o resultado no arquivo HTML
+with open('resultado.html', 'w') as f:
     f.write('<html>\n')
-    f.write('<head><title>Spanish Headers</title></head>\n')
+    f.write('<head>\n')
+    f.write('<title>Resultado</title>\n')
+    f.write('</head>\n')
     f.write('<body>\n')
-    for header in spanish_headers:
-        f.write('<h1>' + header + '</h1>\n')
+    for header in translated_headers:
+        f.write('<h1>{}</h1>\n'.format(header))
     f.write('</body>\n')
     f.write('</html>\n')
