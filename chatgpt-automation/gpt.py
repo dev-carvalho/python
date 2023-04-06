@@ -11,21 +11,21 @@
 import requests
 import argparse
 #import os 
+#api_key = os.getenv("Variavel")
 
 # Criar uma chave de acesso para api da OpenAI 
 # em https://platform.openai.com/account/api-keys 
 # e configurar o arquivo key.py
 from key import api_key # carregar a api_key do arquivo key.py
 
+api_endpoint = "https://api.openai.com/v1/completions"
+
 parser = argparse.ArgumentParser()
 parser.add_argument("prompt", help="the prompt to send to the OpenAI API")
 parser.add_argument("file_name", help="Name of the file to save Python script")
 
-api_endpoint = "https://api.openai.com/v1/completions"
-#api_key = os.getenv("OPENAI_API_KEY")
-
 print("Python Automation with ChatGPT - Version 0.0.1")
-print("Designed by Marcos Antonio de Carvalho\n")
+print("Designed by Marcos Aantonio de Carvalho\n")
 
 args = parser.parse_args()
 
