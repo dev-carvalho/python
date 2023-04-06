@@ -33,7 +33,7 @@ request_data = {
     "model": "text-davinci-003",
     "prompt": f"Write python script to {args.prompt}. Provide only code, no text",
     "max_tokens": 1000,
-    "temperature": 0.5
+    "temperature": 0.5 # define o nível ousadia da resposta (mais alto mais criativo)
 }
 
 response = requests.post(api_endpoint, headers=request_headers, json=request_data)
