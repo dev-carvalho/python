@@ -1,6 +1,6 @@
 
 #### Programa em Python para solicitar código de automação em Python ao ChatGPT
-- Inspirado video: Python Automation with ChatGPT do canal `TechWorld with Nana`
+- Inspirado no video `Python Automation with ChatGPT` do canal `TechWorld with Nana`
 - Testado no GPT-3.5
 
 
