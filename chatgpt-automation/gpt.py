@@ -10,15 +10,15 @@
 
 import requests
 import argparse
-#import os 
-#api_key = os.getenv("Variavel")
+import os 
 
 # Criar uma chave de acesso para api da OpenAI 
 # em https://platform.openai.com/account/api-keys 
 # e configurar o arquivo key.py
-from key import api_key # carregar a api_key do arquivo key.py
+# from key import api_key # carregar a api_key do arquivo key.py
 
 api_endpoint = "https://api.openai.com/v1/completions"
+api_key = os.getenv("api_key")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("prompt", help="the prompt to send to the OpenAI API")
@@ -42,7 +42,7 @@ request_data = {
     # 1 Token por minuto 
     #
     "prompt": f"Write python script to {args.prompt}. Provide only code, no text",
-    "max_tokens": 4097, # https://platform.openai.com/docs/models/gpt-3-5
+    "max_tokens": 3841, # (4097 - 256)  https://platform.openai.com/docs/models/gpt-3-5
     "temperature": 0.8 # 0.5 0.2 # define o nível ousadia da resposta (mais alto mais criativo)
 }
 
