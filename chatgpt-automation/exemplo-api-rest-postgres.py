@@ -1,6 +1,6 @@
 # Ptrograma gerado em resposta a solicitação:
 #
-# py gpt.py "api grud padrão rest utilizando fastapi e conexao com postgres para guardar uuid, nome do usuario, email, senha" teste.py
+# py gpt.py "api grud padrão rest utilizando fastapi e conexao com postgres para guardar uuid, nome do usuario, email, senha" exemplo-api-rest-postgres.py
 #
 
 import uuid
