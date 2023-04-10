@@ -1,6 +1,8 @@
 
 #### Programa em Python para solicitar código de automação em Python ao ChatGPT
-Testado no GPT-3.5
+- Inspirado video: Python Automation with ChatGPT do canal `TechWorld with Nana`
+- Testado no GPT-3.5
+
 
 #### Criar uma chave de acesso para api da OpenAI
 
