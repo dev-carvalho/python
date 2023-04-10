@@ -1,5 +1,6 @@
 
-
+#### Programa em Python para solicitar código de automação em Python ao ChatGPT
+Testado no GPT-3.5
 
 #### Criar uma chave de acesso para api da OpenAI
 
