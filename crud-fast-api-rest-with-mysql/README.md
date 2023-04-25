@@ -15,7 +15,7 @@
 
 ### Criar banco de dados e tabelas
 
-- Crie o banco de dados my_test_db usando o seguinte script MySQL:
+- Crie o banco de dados my_test_db usando o seguinte script MySQL: <br>
 `CREATE DATABASE my_test_db;`
 
 - Crie uma tabela de produtos usando o seguinte script MySQL:
