@@ -1,6 +1,8 @@
 
 ## API REST para executar operações CRUD usando FastAPI com MySQL
 
+Inspiração https://www.tutorialsbuddy.com/create-rest-api-to-perform-crud-operations-using-fastapi-and-mysql
+
 ### Instale as Dependências
 - Instale FastAPI: `pip install fastapi`
 - Instale uvicorn: `pip install uvicorn`
