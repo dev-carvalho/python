@@ -14,7 +14,7 @@
 
 ### Construindo a Imagem Docker
 
-`docker build -t py-app .`
+`docker build -t img-py-app .`
 
 ### Iniciando o contêiner Docker
 
@@ -22,7 +22,7 @@
 
 ### Documentação interativa da API que utiliza a FatsAPI
 
- Acesse http://192.168.99.100/docs ou http://127.0.0.1/docs (ou equivalente, usando seu host Docker).
+ Acesse http://127.0.0.1/docs (ou equivalente, usando seu host Docker).
 
 
 

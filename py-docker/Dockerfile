@@ -77,19 +77,3 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 ##
 # End.
 
-
-
-
-##-----------##
-##  BUILDER  ##
-##-----------##
-#
-# docker run --name app -it py-app-crud-api-rest-postgres
-#
-# docker run --name app -d py-app
-#
-
-
-
-# docker container start app
-#  docker container exec -it app  /bin/sh
