@@ -14,14 +14,14 @@
 
 ### Construindo a Imagem Docker
 
-`docker build -t img-py-app .`
+`docker build -t img-app .`
 
 ### Iniciando o contêiner Docker
 
-`docker run -d --name py-app -p 80:80 img-py-app`
+`docker run -d --rm --name app -p 80:80 img-app`
 
 - Para habilitar a execução do contêiner na inicialização e habilitar reinicializações em falhas<br>
-`docker run -d --restart --name py-app -p 80:80 img-py-app`
+`docker run -d --restart --name app -p 80:80 img-app`
 
 ### Documentação interativa da API que utiliza a FatsAPI
 

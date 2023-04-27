@@ -60,7 +60,8 @@ RUN pip install --no-cache /wheels/*
 COPY ./app /code/app
 
 # Inicia o WebServer e a apliacação
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+#CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["python","app/main.py"]
 
 # Se você está executando seu contêiner atrás de um Proxy de Terminação TLS (load balancer) 
 # como Nginx ou Traefik, adicione a opção --proxy-headers, isso fará com que o Uvicorn confie 
