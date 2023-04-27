@@ -56,18 +56,23 @@ COPY --from=builder /code/requirements.txt .
 
 RUN pip install --no-cache /wheels/*
 
-
-
 # Código do projeto da aplicação
 COPY ./app /code/app
 
 # Inicia o WebServer e a apliacação
-# CMD ["uvicorn", "app.main:app", "--host", "127.0.0.1", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 
-# compilações de vários estágios podem diminuir o tamanho de suas imagens de produção,
-# ajudando você a economizar tempo e dinheiro. Além disso, isso simplificará seus 
-# contêineres de produção. Além disso, devido ao tamanho menor e à simplicidade, 
-# há uma superfície de ataque potencialmente menor.
+# Se você está executando seu contêiner atrás de um Proxy de Terminação TLS (load balancer) 
+# como Nginx ou Traefik, adicione a opção --proxy-headers, isso fará com que o Uvicorn confie 
+# nos cabeçalhos enviados por esse proxy, informando que o aplicativo está sendo executado
+#  atrás do HTTPS, etc.
+# CMD ["uvicorn", "app.main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "80"]
+
+# RESUMO:
+#  compilações de vários estágios podem diminuir o tamanho de suas imagens de produção,
+#  ajudando você a economizar tempo e dinheiro. Além disso, isso simplificará seus 
+#  contêineres de produção. Além disso, devido ao tamanho menor e à simplicidade, 
+#  há uma superfície de ataque potencialmente menor.
 
 ##
 # End.

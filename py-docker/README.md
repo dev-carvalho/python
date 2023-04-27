@@ -28,13 +28,5 @@
 
 
 
-### DICAS
-
-1. Se você está executando seu contêiner atrás de um Proxy de Terminação TLS (load balancer) como Nginx ou Traefik, adicione a opção --proxy-headers, isso fará com que o Uvicorn confie nos cabeçalhos enviados por esse proxy, informando que o aplicativo está sendo executado atrás do HTTPS, etc.
-
-`CMD ["uvicorn", "app.main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "80"]`
-
-
-
 
 
