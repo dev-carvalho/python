@@ -18,7 +18,7 @@
 
 ### Iniciando o contêiner Docker
 
-`docker run -d --name py-app -p 80:80 py-app`
+`docker run -d --name py-app -p 80:80 img-py-app`
 
 ### Documentação interativa da API que utiliza a FatsAPI
 
