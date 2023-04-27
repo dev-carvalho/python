@@ -84,9 +84,6 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 ##  BUILDER  ##
 ##-----------##
 #
-# docker build -t py-app .
-# docker build -t py-app-crud-api-rest-postgres .
-#
 # docker run --name app -it py-app-crud-api-rest-postgres
 #
 # docker run --name app -d py-app

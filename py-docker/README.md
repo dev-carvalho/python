@@ -14,11 +14,11 @@
 
 ### Construindo a Imagem Docker
 
-`docker build -t myimage .`
+`docker build -t py-app .`
 
 ### Iniciando o contêiner Docker
 
-`docker run -d --name mycontêiner -p 80:80 myimage`
+`docker run -d --name py-app -p 80:80 py-app`
 
 ### Documentação interativa da API que utiliza a FatsAPI
 
