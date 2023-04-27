@@ -20,7 +20,7 @@
 
 `docker run -d --name py-app -p 80:80 img-py-app`
 
-- Para habilitar a execução do contêiner na inicialização e habilitar reinicializações em falhas
+- Para habilitar a execução do contêiner na inicialização e habilitar reinicializações em falhas<br>
 `docker run -d --restart --name py-app -p 80:80 img-py-app`
 
 ### Documentação interativa da API que utiliza a FatsAPI
