@@ -64,13 +64,13 @@ COPY ./app /code/app
 # CMD ["python","app/main.py"]
 
 # Inicia o WebServer e a apliacação
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+# CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
 
 # Se você está executando seu contêiner atrás de um Proxy de Terminação TLS (load balancer) 
 # como Nginx ou Traefik, adicione a opção --proxy-headers, isso fará com que o Uvicorn confie 
 # nos cabeçalhos enviados por esse proxy, informando que o aplicativo está sendo executado
 #  atrás do HTTPS, etc.
-# CMD ["uvicorn", "app.main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "80"]
+ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--workers", "4", "--proxy-headers" ]
 
 # RESUMO:
 #  compilações de vários estágios podem diminuir o tamanho de suas imagens de produção,

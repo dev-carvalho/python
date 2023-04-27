@@ -21,7 +21,7 @@
 `docker run -d --rm --name app -p 80:80 img-app`
 
 - Para habilitar a execução do contêiner na inicialização e habilitar reinicializações em falhas<br>
-`docker run -d --restart --name app -p 80:80 img-app`
+`docker run -d --restart on-failure --name app -p 80:80 img-app`
 
 ### Documentação interativa da API que utiliza a FatsAPI
 
