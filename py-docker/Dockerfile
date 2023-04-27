@@ -12,11 +12,11 @@
 # imagem enxuta e modular pronta para produção.
 
 ##---------------------------##
-##      FASE TEMPORARIA      ##
+##    FASE REQUERIMENTOS     ##
 ##  COMPILAÇÃO E CONSTRUÇÃO  ##
 ##---------------------------##
 
-# temp stage (Fase Temporaria)
+# requirements stage (Fase Requerimentos)
 FROM python:3.11.1-slim as builder
 
 # Diretório da aplicação
@@ -77,3 +77,8 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 ##
 # End.
 
+
+
+
+# docker container start app
+#  docker container exec -it app  /bin/sh
