@@ -15,5 +15,5 @@ def read_root():
 
 # Ativa o serviço em produção
 # Isso aqui eu aprendi perguntando para o chatGPT
-if __name__ == '__main__':
-    uvicorn.run(app, host="0.0.0.0", port=80)
+#if __name__ == '__main__':
+#    uvicorn.run(app, host="0.0.0.0", port=80)
