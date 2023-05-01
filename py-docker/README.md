@@ -1,5 +1,9 @@
+## Descrição do Projeto
+Construção do ecosistema de um Micro-serviço contruido em Python utilizando:
+- bbiblioteca FastAPI (Padrão REST);
+- Banco de Dados PostGreSQL e sua Administração (pgadmin);
 
-
+<br>
 
 ### Estrutura de Diretório
 
@@ -37,7 +41,7 @@
 
 <br>
 
-## Micro-Serviço
+## Micro-Serviço via FastAPI do Phython 
 
 ### Documentação interativa da API que utiliza a FatsAPI
 
