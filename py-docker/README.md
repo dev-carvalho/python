@@ -12,7 +12,7 @@
 └── requirements.txt
 ```
 
-### Construindo a Imagem Docker
+## Construindo a Imagem da Aplicação via Dockerfile
 
 `docker build -t img-app .`
 
@@ -27,6 +27,13 @@
 
  Acesse http://127.0.0.1/docs (ou equivalente, usando seu host Docker).
 
+## Construindo da Infra-estrutura necessária para a Aplicação
+
+- UP/Levanta a infra-estrutura: <br>
+`docker-compose up -d`
+
+- DOWN/Derubar a infra-estrutura da Aplicação: <br>
+`docker-compose down`
 
 
 
