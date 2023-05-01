@@ -1,0 +1,80 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+
+  # Banco de Dados PostGres
+  db-PostGreSQL:
+    image: postgres
+    container_name: db
+    # automatically restarts the container - Docker daemon on restart or
+    # the container itself is manually restarted
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: "root"
+      POSTGRES_USER: postgres
+      POSTGRES_DB: database
+    ports:
+      - "5432:5432"
+    volumes:
+      - type: bind
+        source: /root/vols/postgres
+        target: /var/lib/postgresql/data
+    networks:
+      net10:
+        ipv4_address: 192.168.10.20        
+
+  # Administração do Banco de Dados PostGres
+  admim-db-PostGreSQL:
+    image: dpage/pgadmin4
+    container_name: db-adm
+    # automatically restarts the container - Docker daemon on restart or
+    # the container itself is manually restarted
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "marcos.antonio.carvalho@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "master"
+    ports:
+      - "54321:80"
+    volumes:
+      - type: bind
+        source: /root/vols/pgadmin
+        target: /var/lib/pgadmin
+    depends_on:
+      - db-PostGreSQL  # depende do rolê do Banco de Dados
+    networks:
+      net10:
+        ipv4_address: 192.168.10.30
+
+  # Aplicação Web em Python 
+  app:
+    build: .
+    container_name: app
+    restart: "on-failure"
+    environment:
+      DATABASE_URL: postgresql://192.168.10.20:5432/database
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+    ports:
+      - 80:80
+    depends_on:
+      - db-PostGreSQL        # depende do rolê do Banco de Dados
+      - admim-db-PostGreSQL  # depende tambem do rolê da Administração do Banco de Dados
+    networks:
+      net10:
+        ipv4_address: 192.168.10.10
+
+# Rede do Microserviço (net10) que interliga a Aplicação (app) e 
+# Banco de Dados (db) bem como a sua Administração (db-adm).
+networks:
+  net10:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.10.0/24"
+          gateway: 192.168.10.1
+
+

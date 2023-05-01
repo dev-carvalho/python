@@ -38,6 +38,7 @@ COPY ./requirements.txt /code/requirements.txt
 
 # Instala os requisitos minimos
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /code/wheels -r /code/requirements.txt
+# O jeito acima é melhor!
 #RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 
@@ -70,7 +71,7 @@ COPY ./app /code/app
 # como Nginx ou Traefik, adicione a opção --proxy-headers, isso fará com que o Uvicorn confie 
 # nos cabeçalhos enviados por esse proxy, informando que o aplicativo está sendo executado
 #  atrás do HTTPS, etc.
- CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--workers", "4", "--proxy-headers" ]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--workers", "4", "--proxy-headers" ]
 
 # RESUMO:
 #  compilações de vários estágios podem diminuir o tamanho de suas imagens de produção,
