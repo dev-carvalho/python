@@ -1,6 +1,6 @@
 ## Descrição do Projeto
-Construção do ecosistema de um Micro-serviço contruido em Python utilizando:
-- bbiblioteca FastAPI (Padrão REST);
+Construção de um ecosistema para um Micro-serviço contruido em linguagem Python utilizando:
+- Biblioteca FastAPI (Padrão REST);
 - Banco de Dados PostGreSQL e sua Administração (pgadmin);
 
 <br>
