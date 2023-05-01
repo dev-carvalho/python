@@ -12,11 +12,11 @@
 └── requirements.txt
 ```
 
+<br>
+
 ## Construindo a Imagem da Aplicação via Dockerfile
 
 `docker build -t img-app .`
-
-<br>
 
 ### Iniciando o contêiner Docker
 
@@ -43,7 +43,7 @@
 
  Acesse http://127.0.0.1/docs (ou equivalente, usando seu host Docker).
 
-
+<br>
 
 
 
