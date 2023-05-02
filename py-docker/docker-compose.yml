@@ -34,7 +34,6 @@ services:
       # de transações em um diretório diferente, que pode ser apoiado por armazenamento com
       # diferentes características de desempenho ou confiabilidade.
       # POSTGRES_INITDB_WALDIR: /var/lib/postgresql/data
-
     ports:
       - "5432:5432"
     volumes:
