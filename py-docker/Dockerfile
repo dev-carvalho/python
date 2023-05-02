@@ -49,6 +49,10 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /code/wheels -r /code/require
 # final stage (Fase Final)
 FROM python:3.11.1-slim 
 
+LABEL author="Marcos Antônio de Carvalho"
+LABEL description="Micro-servico em Linguagem Python"
+LABEL version="1.0"
+
 # Diretório da aplicação
 WORKDIR /code
 

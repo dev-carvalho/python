@@ -12,9 +12,29 @@ services:
     # the container itself is manually restarted
     restart: always
     environment:
+      # Essa variável de ambiente é necessária para você usar a imagem PostgreSQL. 
+      # Não deve estar  vazio ou indefinido. Esta variável de ambiente define a senha 
+      # de superusuário para PostgreSQL
       POSTGRES_PASSWORD: "root"
+      # Essa variável de ambiente opcional é usada em conjunto com POSTGRES_PASSWORDpara 
+      # definir um usuário e sua senha. Essa variável criará o usuário especificado com 
+      # poder de superusuário e um banco de dados com o mesmo nome. Se não for especificado, 
+      # o usuário padrão postgresserá usado. 
       POSTGRES_USER: postgres
+      # Variável de ambiente opcional, usada para definir um nome diferente para o banco
+      # de dados padrão que é criado quando a imagem é iniciada pela primeira vez. 
+      # Se não for especificado, o valor de POSTGRES_USER será usado.
       POSTGRES_DB: database
+      # Variável de ambiente opcional, usada para definir outro local (subdiretório)
+      # para os arquivos do banco de dados. O padrão é /var/lib/postgresql/data.
+      # PGDATA: /var/lib/postgresql/data
+      # Variável de ambiente opcional, usada para definir outro local para o log de transações
+      # do Postgres. Por padrão, o log de transações é armazenado em um subdiretório da pasta
+      # principal de dados do Postgres ( PGDATA). Às vezes, pode ser desejável armazenar o log
+      # de transações em um diretório diferente, que pode ser apoiado por armazenamento com
+      # diferentes características de desempenho ou confiabilidade.
+      # POSTGRES_INITDB_WALDIR: /var/lib/postgresql/data
+
     ports:
       - "5432:5432"
     volumes:
@@ -49,7 +69,9 @@ services:
 
   # Aplicação Web em Python 
   app:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     container_name: app
     restart: "on-failure"
     environment:
