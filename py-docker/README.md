@@ -1,3 +1,7 @@
+<div style="display: inline_block">
+  <img align="right" alt="Dev-pic" style="border-radius: 50%; width: 50%; height:auto;" src="https://github.com/dev-carvalho/dream/blob/main/k-1.png">
+</div>
+
 ## Descrição do Projeto
 Construção de um ecosistema para um Micro-serviço contruido em linguagem Python utilizando:
 - Biblioteca FastAPI (Padrão REST);
@@ -41,6 +45,12 @@ Construção de um ecosistema para um Micro-serviço contruido em linguagem Pyth
 
 <br>
 
+## Acesso ao shell do container 
+
+`#  docker container exec -it app  /bin/sh`
+
+<br>
+
 ## Micro-Serviço via FastAPI do Phython 
 
 ### Documentação interativa da API que utiliza a FatsAPI
@@ -48,6 +58,3 @@ Construção de um ecosistema para um Micro-serviço contruido em linguagem Pyth
  Acesse http://127.0.0.1/docs (ou equivalente, usando seu host Docker).
 
 <br>
-
-
-

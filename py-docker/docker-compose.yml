@@ -12,11 +12,10 @@ services:
     # the container itself is manually restarted
     restart: always
     environment:
-      # Essa variável de ambiente é necessária para você usar a imagem PostgreSQL. 
-      # Não deve estar  vazio ou indefinido. Esta variável de ambiente define a senha 
-      # de superusuário para PostgreSQL
+      # Variável de ambiente obrigatória para você usar a imagem PostgreSQL. 
+      # Ela define a senha de superusuário para PostgreSQL
       POSTGRES_PASSWORD: "root"
-      # Essa variável de ambiente opcional é usada em conjunto com POSTGRES_PASSWORDpara 
+      # Variável de ambiente opcional, usada em conjunto com POSTGRES_PASSWORDpara 
       # definir um usuário e sua senha. Essa variável criará o usuário especificado com 
       # poder de superusuário e um banco de dados com o mesmo nome. Se não for especificado, 
       # o usuário padrão postgresserá usado. 
@@ -37,17 +36,19 @@ services:
     ports:
       - "5432:5432"
     volumes:
+      # É recomendavel um diretório exclusivo para volumes. 
+      # Isso facilita o backup.
       - type: bind
         source: /root/vols/postgres
         target: /var/lib/postgresql/data
     networks:
-      net10:
-        ipv4_address: 192.168.10.20        
+      net50-database:
+        ipv4_address: 192.168.50.201       
 
   # Administração do Banco de Dados PostGres
   admim-db-PostGreSQL:
     image: dpage/pgadmin4
-    container_name: db-adm
+    container_name: adm
     # automatically restarts the container - Docker daemon on restart or
     # the container itself is manually restarted
     restart: always
@@ -55,47 +56,81 @@ services:
       PGADMIN_DEFAULT_EMAIL: "marcos.antonio.carvalho@gmail.com"
       PGADMIN_DEFAULT_PASSWORD: "master"
     ports:
-      - "54321:80"
+      - "5000:80"
     volumes:
       - type: bind
+        # É recomendavel um diretório exclusivo para volumes. 
+        # Isso facilita o backup.      
         source: /root/vols/pgadmin
         target: /var/lib/pgadmin
     depends_on:
       - db-PostGreSQL  # depende do rolê do Banco de Dados
     networks:
-      net10:
-        ipv4_address: 192.168.10.30
+      net50-database:
+        ipv4_address: 192.168.50.251
 
   # Aplicação Web em Python 
-  app:
+  ms-1:
     build: 
       context: .
-      dockerfile: Dockerfile
-    container_name: app
+      dockerfile: ms-1_Dockerfile
+    container_name: ms-1
     restart: "on-failure"
-    environment:
-      DATABASE_URL: postgresql://192.168.10.20:5432/database
-    volumes:
-      - type: bind
-        source: .
-        target: /app
+#    environment:
+#      DATABASE_URL: postgresql://192.168.10.20:5432/database
     ports:
-      - 80:80
+      - 1001:80
     depends_on:
       - db-PostGreSQL        # depende do rolê do Banco de Dados
       - admim-db-PostGreSQL  # depende tambem do rolê da Administração do Banco de Dados
     networks:
-      net10:
-        ipv4_address: 192.168.10.10
+      net10-microservice:
+        ipv4_address: 192.168.20.1
+      net50-database:
+        ipv4_address: 192.168.50.1
+      net90-monitoring:
+        ipv4_address: 192.168.90.1
+
+  ms-2:
+    build: 
+      context: .
+      dockerfile: ms-2_Dockerfile
+    container_name: ms-2
+    restart: "on-failure"
+#    environment:
+#      DATABASE_URL: postgresql://192.168.10.20:5432/database
+    ports:
+      - 1002:80
+    depends_on:
+      - db-PostGreSQL        # depende do rolê do Banco de Dados
+      - admim-db-PostGreSQL  # depende tambem do rolê da Administração do Banco de Dados
+    networks:
+      net10-microservice:
+        ipv4_address: 192.168.20.2
+      net50-database:
+        ipv4_address: 192.168.50.2
+      net90-monitoring:
+        ipv4_address: 192.168.90.2        
 
 # Rede do Microserviço (net10) que interliga a Aplicação (app) e 
 # Banco de Dados (db) bem como a sua Administração (db-adm).
 networks:
-  net10:
+  net10-microservice:
     ipam:
       driver: default
       config:
-        - subnet: "192.168.10.0/24"
-          gateway: 192.168.10.1
-
+        - subnet: "192.168.20.0/24"
+          gateway: 192.168.20.254
+  net50-database:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.50.0/24"
+          gateway: 192.168.50.254          
+  net90-monitoring:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.90.0/24"
+          gateway: 192.168.90.254  
 
