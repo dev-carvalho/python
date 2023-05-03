@@ -13,11 +13,19 @@ Construção de um ecosistema para um Micro-serviço contruido em linguagem Pyth
 
 ```
 .
-├── app
-│   ├── __init__.py
-│   └── main.py
-├── Dockerfile
-└── requirements.txt
+├── README.md
+├── docker-compose.yml
+├── image
+│   └── microservices (no HA).PNG
+├── ms-1
+│   ├── __init__.py
+│   └── main.py
+├── ms-1_Dockerfile
+├── ms-2
+│   ├── __init__.py
+│   └── main.py
+├── ms-2_Dockerfile
+└── requirements.pip
 ```
 
 <br>
