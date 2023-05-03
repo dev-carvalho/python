@@ -3,7 +3,10 @@
 </div>
 
 ## Descrição do Projeto
-Construção de um ecosistema para um Micro-serviço contruido em linguagem Python utilizando:
+Construção de uma infra-estrutura para suportar o ecosistema para Micro-serviços contruidos construidos com diversas tecnologias. 
+
+Utilizaremos nesse projeto para os Micro-serviços:
+- Llinguagem Python;
 - Biblioteca FastAPI (Padrão REST);
 - Banco de Dados PostGreSQL e sua Administração (pgadmin);
 
