@@ -1,5 +1,5 @@
 <div style="display: inline_block">
-  <img align="right" alt="Dev-pic" style="border-radius: 50%; width: 50%; height:auto;" src="https://github.com/dev-carvalho/python/tree/main/py-docker/image/microservices%20(no%20HA).PNG">
+  <img align="right" alt="Dev-pic" style="border-radius: 50%; width: 50%; height:auto;" src="https://github.com/dev-carvalho/python/blob/main/py-docker/image/microservices%20(no%20HA).PNG">
 </div>
 
 ## Descrição do Projeto
