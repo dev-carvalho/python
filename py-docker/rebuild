@@ -4,6 +4,7 @@
 
 #docker-compose down
 
+# Removendo CONTAINER
 docker container rm -f  ms-1
 docker container rm -f  ms-2
 
