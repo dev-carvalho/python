@@ -73,7 +73,7 @@ services:
   ms-1:
     build: 
       context: .
-      dockerfile: ms-1/ms-1_Dockerfile
+      dockerfile: ms-1/Dockerfile
     container_name: ms-1
     restart: "on-failure"
 #    environment:
@@ -94,7 +94,7 @@ services:
   ms-2:
     build: 
       context: .
-      dockerfile: ms-2/ms-2_Dockerfile
+      dockerfile: ms-2/Dockerfile
     container_name: ms-2
     restart: "on-failure"
 #    environment:
