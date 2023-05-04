@@ -2,9 +2,19 @@
 # Reconstrução da infra-estrura de "Microservice no HA"
 #
 
-docker image     rm -f $(docker image ls -q)
-docker container rm -f $(docker container ls -q)
-docker network   rm -f $(docker network ls)
+#docker-compose down
+
+docker container rm -f  ms-1
+docker container rm -f  ms-2
+
+# Removendo IMAGE
+docker image     rm -f  $(docker image ls -q py-docker_ms-1) 
+docker image     rm -f  $(docker image ls -q py-docker_ms-2) 
+ 
+
+# docker image   rm -f $(docker image ls -q)
+# docker container rm -f $(docker container ls -q)
+# docker network   rm -f $(docker network ls)
 
 docker-compose up -d
-docker ps
+docker-compose ps

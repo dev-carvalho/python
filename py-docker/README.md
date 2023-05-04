@@ -21,11 +21,11 @@ Utilizaremos nesse projeto para os Micro-serviços:
 ├── image
 │   └── microservices (no HA).PNG
 ├── ms-1
-│   └── main.py
-├── ms-1_Dockerfile
+│   ├── main.py
+│   └── ms-1_Dockerfile
 ├── ms-2
-│   └── main.py
-├── ms-2_Dockerfile
+│   ├── main.py
+│   └── ms-2_Dockerfile
 ├── rebuild
 └── requirements.pip
 ```
@@ -57,7 +57,7 @@ Utilizaremos nesse projeto para os Micro-serviços:
 
 ## Acesso ao shell do container 
 
-`#  docker container exec -it app  /bin/sh`
+`#  docker container exec -it ms-1  /bin/sh`
 
 <br>
 
