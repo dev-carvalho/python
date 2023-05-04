@@ -3,7 +3,7 @@
 </div>
 
 ## Descrição do Projeto
-Construção de uma infra-estrutura para suportar o ecosistema de multiplos microsserviços contruidos com multiplas tecnologias. 
+Construção de uma infra-estrutura para suportar o ecosistema de multiplos microsserviços contruidos com diversas tecnologias. 
 
 Utilizaremos nesse projeto para os Micro-serviços:
 - Llinguagem Python;
