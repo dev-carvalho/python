@@ -1,0 +1,65 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+
+  # Aplicação Web em Python 
+  ms-1:
+    build: 
+      context: .
+      dockerfile: ms-1/Dockerfile
+    container_name: ms-1
+    restart: "on-failure"
+#    environment:
+#      DATABASE_URL: postgresql://192.168.10.20:5432/database
+    ports:
+      - 1001:80
+    depends_on:
+      - db-PostGreSQL        # depende do rolê do Banco de Dados
+      - admim-db-PostGreSQL  # depende tambem do rolê da Administração do Banco de Dados
+    networks:
+      net10-microservice:
+        ipv4_address: 192.168.20.1
+      net50-database:
+        ipv4_address: 192.168.50.1
+      net90-monitoring:
+        ipv4_address: 192.168.90.1
+
+  ms-2:
+    build: 
+      context: .
+      dockerfile: ms-2/Dockerfile
+    container_name: ms-2
+    restart: "on-failure"
+#    environment:
+#      DATABASE_URL: postgresql://192.168.10.20:5432/database
+    ports:
+      - 1002:80
+    depends_on:
+      - db-PostGreSQL        # depende do rolê do Banco de Dados
+      - admim-db-PostGreSQL  # depende tambem do rolê da Administração do Banco de Dados
+    networks:
+      net10-microservice:
+        ipv4_address: 192.168.20.2
+      net50-database:
+        ipv4_address: 192.168.50.2
+      net90-monitoring:
+        ipv4_address: 192.168.90.2        
+
+# Rede do Microserviço (net10) que interliga a Aplicação (app) e 
+# Banco de Dados (db) bem como a sua Administração (db-adm).
+networks:
+  net10-microservice:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.20.0/24"
+          gateway: 192.168.20.254
+  net90-monitoring:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.90.0/24"
+          gateway: 192.168.90.254  
+

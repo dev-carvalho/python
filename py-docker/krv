@@ -1,0 +1,90 @@
+#
+# Reconstrução da infra-estrura de "Microservice no HA"
+#
+
+# HELP - Informações de Ajuda
+if [ -z "$1" ] || [ $1 = -h ] || [ $1 = --help ]
+then
+    echo ""
+    echo "Usage: krv COMPONENT COMMAND"
+    echo ""
+    echo "Commands:"
+    echo "  up          Ativa o componente"
+    echo "  down        Desativa o componente"
+    echo "  rebuild     Reconstroi o componente (Containers, Images and Networks)"
+    echo ""
+    echo "Global Options:"
+    echo "  -h, --help"
+    echo "  -v, --version"
+    echo ""
+fi
+
+
+# Pega os componentes Docker Compose e coloca em
+# uma lista para verificação da ação.
+list_components=""
+for file_docker_compose in $(ls docker-compose*)
+do 
+    component=$(echo $file_docker_compose | cut -d "." -f 2)
+    list_components="$list_components $component"
+done
+list_components="all$list_components"
+#echo "Components: '$list_components'"
+
+# for component in $list_components
+# do
+#   echo $component
+# done
+
+
+
+
+
+# Ação sobre o componente
+
+
+exit
+
+
+up          Ativa o componente
+down        Desativa o componente
+rebuild     Reconstroi o componente (Containers, Images and Networks)
+
+--help
+--version
+
+
+
+if [[ $1 =~ ^(-h|--help) ]]
+then
+    echo ""
+    echo "Usage: krv COMPONENT COMMAND"
+    echo ""
+    echo "Commands:"
+    echo "  up          Ativa o componente"
+    echo "  down        Desativa o componente"
+    echo "  rebuild     Reconstroi o componente (Containers, Images and Networks)"
+    echo ""
+    echo "Global Options:"
+    echo "-h, --help"
+    echo "-v, --version"
+    echo ""
+fi
+
+#docker-compose down
+
+# Removendo CONTAINER
+docker container rm -f  ms-1
+docker container rm -f  ms-2
+
+# Removendo IMAGE
+docker image     rm -f  $(docker image ls -q py-docker_ms-1) 
+docker image     rm -f  $(docker image ls -q py-docker_ms-2) 
+ 
+
+# docker image   rm -f $(docker image ls -q)
+# docker container rm -f $(docker container ls -q)
+# docker network   rm -f $(docker network ls)
+
+docker-compose up -d
+docker-compose ps
